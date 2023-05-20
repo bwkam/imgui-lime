@@ -83,8 +83,8 @@ class Im {
 
 	static var framePending:Bool = false;
 
-	public static function init(done:() -> Void):Void {
-		loadImGui(done);
+	public static function init():Void {
+		loadImGui();
 	}
 
 	static function loadScript(src:String, done:Bool->Void) {
@@ -109,11 +109,11 @@ class Im {
 		js.Browser.document.head.appendChild(script);
 	}
 
-	static function loadImGui(done:() -> Void) {
+	static function loadImGui() {
 		loadScript('./imgui.umd.js', function(_) {
 			loadScript('./imgui_impl.umd.js', function(_) {
 				Reflect.field(untyped window.ImGui, 'default')().then(function() {
-					initImGui(done);
+					initImGui();
 				}, function() {
 					trace('Failed to load ImGui bindings');
 				});
@@ -121,7 +121,7 @@ class Im {
 		});
 	}
 
-	static function initImGui(done:() -> Void) {
+	static function initImGui() {
 		var canvas:CanvasElement = cast Browser.document.getElementById("myCanvas");
 
 		ImGui.createContext();
@@ -130,7 +130,6 @@ class Im {
 
 		io = ImGui.getIO();
 
-		done();
 	}
 
 	public static function newFrame():Void {
