@@ -1,3 +1,4 @@
+#if cpp
 import lime.app.Application;
 import imguicpp.ImGui;
 import sdl.SDL;
@@ -62,3 +63,4 @@ class Im {
 		// clay.Clay.app.runtime.skipMouseEvents = io.wantCaptureMouse;
 	}
 }
+#end

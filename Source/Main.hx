@@ -11,7 +11,7 @@ class Main extends Application {
 	}
 
 	override function onWindowCreate() {
-		Im.init();
+		ImJs.init(() -> trace("hi"));
 	}
 
 	public override function render(context:RenderContext):Void {
@@ -22,9 +22,9 @@ class Main extends Application {
 				gl.clearColor(0.75, 1, 0, 1);
 				gl.clear(gl.COLOR_BUFFER_BIT);
 
-				Im.newFrame();
+				ImJs.newFrame();
 				ImGui.showDemoWindow();
-				Im.endFrame();
+				ImJs.endFrame();
 
 			default:
 		}
